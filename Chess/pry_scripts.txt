@@ -1,0 +1,5 @@
+load "display.rb"
+b = Board.new
+b.populate
+d = Display.new(b)
+d.move_cursor
