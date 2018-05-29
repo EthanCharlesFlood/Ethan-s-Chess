@@ -3,6 +3,7 @@ class Piece
 
 COLORS = [:white, :black]
 
+attr_reader :pos, :color, :board
   def initialize(color,board,pos)
     @color = color
     @board = board
@@ -32,6 +33,19 @@ COLORS = [:white, :black]
   def to_s
     # for display purposes
     symbol.to_s
+  end
+
+  def valid_move?(pos)
+    if @board.valid_pos?(pos) == false
+      return false
+    elsif @board[pos].empty? == false
+      return false
+    elsif pos[0] < 0
+      return false
+    elsif pos[1] < 0
+      return false
+    end
+    true
   end
 
   private

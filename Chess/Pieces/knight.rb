@@ -4,13 +4,19 @@ class Knight < Piece
   include SteppingPiece
 
   def symbol
-
+    :K
   end
 
-  protected
-
-  def move_dirs
-
-  end
 
 end
+
+MOVES = [
+  [1,2],
+  [1,-2],
+  [2,1],
+  [2,-1],
+  [-1,2],
+  [-1,-2],
+  [-2,-1],
+  [-2,1]
+]

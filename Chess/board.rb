@@ -1,4 +1,5 @@
 require_relative "pieces.rb"
+require 'byebug'
 
 # Phase I: Board
 # Your Board class should hold a 2-dimensional array (an array of arrays). Each position in the board either holds a moving Piece or a NullPiece (NullPiece will inherit from Piece).
@@ -27,53 +28,31 @@ class Board
   end
 
   def white_populate
-    @grid[0,0] = Rook.new(:white, self, [0,0])
-    @grid[0,1] = Knight.new(:white, self, [0,1])
-    @grid[0,2] = Bishop.new(:white, self, [0,2])
-    @grid[0,3] = Queen.new(:white, self, [0,3])
-    @grid[0,4] = King.new(:white, self, [0,4])
-    @grid[0,5] = Bishop.new(:white, self, [0,5])
-    @grid[0,6] = Knight.new(:white, self, [0,6])
-    @grid[0,7] = Rook.new(:white, self, [0,7])
+    self[[0,0]] = Rook.new(:white, self, [0,0])
+    self[[0,1]] = Knight.new(:white, self, [0,1])
+    self[[0,2]] = Bishop.new(:white, self, [0,2])
+    self[[0,3]] = Queen.new(:white, self, [0,3])
+    self[[0,4]] = King.new(:white, self, [0,4])
+    self[[0,5]] = Bishop.new(:white, self, [0,5])
+    self[[0,6]] = Knight.new(:white, self, [0,6])
+    self[[0,7]] = Rook.new(:white, self, [0,7])
     (0..7).each do |idx|
-      @grid[1,idx] = Pawn.new(:white, self, [0,idx])
+      self[[1,idx]] = Pawn.new(:white, self, [0,idx])
     end
-    # @grid[[0,0]] = Rook.new(:white, self, [0,0])
-    # @grid[[0,1]] = Knight.new(:white, self, [0,1])
-    # @grid[[0,2]] = Bishop.new(:white, self, [0,2])
-    # @grid[[0,3]] = Queen.new(:white, self, [0,3])
-    # @grid[[0,4]] = King.new(:white, self, [0,4])
-    # @grid[[0,5]] = Bishop.new(:white, self, [0,5])
-    # @grid[[0,6]] = Knight.new(:white, self, [0,6])
-    # @grid[[0,7]] = Rook.new(:white, self, [0,7])
-    # (0..7).each do |idx|
-    #   @grid[[1,idx]] = Pawn.new(:white, self, [0,idx])
-    # end
   end
 
   def black_populate
-    @grid[7,0] = Rook.new(:black, self, [7,0])
-    @grid[7,1] = Knight.new(:black, self, [7,1])
-    @grid[7,2] = Bishop.new(:black, self, [7,2])
-    @grid[7,3] = King.new(:black, self, [7,3])
-    @grid[7,4] = Queen.new(:black, self, [7,4])
-    @grid[7,5] = Bishop.new(:black, self, [7,5])
-    @grid[7,6] = Knight.new(:black, self, [7,6])
-    @grid[7,7] = Rook.new(:black, self, [7,7])
+    self[[7,0]] = Rook.new(:black, self, [7,0])
+    self[[7,1]] = Knight.new(:black, self, [7,1])
+    self[[7,2]] = Bishop.new(:black, self, [7,2])
+    self[[7,3]] = King.new(:black, self, [7,3])
+    self[[7,4]] = Queen.new(:black, self, [7,4])
+    self[[7,5]] = Bishop.new(:black, self, [7,5])
+    self[[7,6]] = Knight.new(:black, self, [7,6])
+    self[[7,7]] = Rook.new(:black, self, [7,7])
     (0..7).each do |idx|
-      @grid[6,idx] = Pawn.new(:black, self, [6,idx])
+      self[[6,idx]] = Pawn.new(:black, self, [6,idx])
     end
-    # @grid[[7,0]] = Rook.new(:black, self, [7,0])
-    # @grid[[7,1]] = Knight.new(:black, self, [7,1])
-    # @grid[[7,2]] = Bishop.new(:black, self, [7,2])
-    # @grid[[7,3]] = King.new(:black, self, [7,3])
-    # @grid[[7,4]] = Queen.new(:black, self, [7,4])
-    # @grid[[7,5]] = Bishop.new(:black, self, [7,5])
-    # @grid[[7,6]] = Knight.new(:black, self, [7,6])
-    # @grid[[7,7]] = Rook.new(:black, self, [7,7])
-    # (0..7).each do |idx|
-    #   @grid[[6,idx]] = Pawn.new(:black, self, [6,idx])
-    # end
   end
 
   def initialize
@@ -81,7 +60,9 @@ class Board
   end
 
   def [](pos)
+
     row,col = pos
+    # debugger
     @grid[row][col]
   end
 

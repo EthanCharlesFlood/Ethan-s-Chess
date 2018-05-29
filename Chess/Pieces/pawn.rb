@@ -1,6 +1,6 @@
 class Pawn < Piece
   def symbol
-
+    :P
   end
 
   def move_dirs

@@ -2,4 +2,6 @@ load "display.rb"
 b = Board.new
 b.populate
 d = Display.new(b)
-d.move_cursor
+d.render
+b[[3,3]] = Queen.new(:white, b, [3,3])
+b[[3,3]].moves

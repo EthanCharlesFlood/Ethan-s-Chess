@@ -7,10 +7,15 @@ class King < Piece
     :&
   end
 
-  protected
-
-  def move_dirs
-
-  end
-
 end
+
+MOVES = [
+  [1,0],
+  [-1,0],
+  [0,1],
+  [0,-1],
+  [1,1],
+  [1,-1],
+  [-1,1],
+  [-1,-1]
+]
