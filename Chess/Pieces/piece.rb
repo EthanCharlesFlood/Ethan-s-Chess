@@ -31,9 +31,9 @@ attr_reader :pos, :color, :board
   end
 
   def valid_move?(pos)
-    if @board.valid_pos?(pos) == false
+    if !@board.valid_pos?(pos)
       return false
-    elsif @board[pos].empty? == false
+    elsif !@board[pos].empty?
       return false
     elsif pos[0] < 0
       return false

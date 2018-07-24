@@ -30,7 +30,6 @@ module SlidingPiece
 
   def grow_unblocked_moves_in_dir(dx,dy)
     unblocked_moves = []
-
     potential_move = [self.pos[0] + dx, self.pos[1] + dy]
 
     until valid_move?(potential_move) == false
@@ -38,7 +37,6 @@ module SlidingPiece
 
         potential_move = [potential_move[0] + dx, potential_move[1] + dy]
     end
-
     if !board[potential_move].nil? && board[potential_move].color != self.color
       unless potential_move[0] < 0 || potential_move[1] < 0
         unblocked_moves << potential_move
@@ -48,13 +46,13 @@ module SlidingPiece
     unblocked_moves
   end
 
-  # def valid_move?(pos)
-  #   if @board.valid_pos?(pos) == false
-  #     return false
-  #   elsif @board[pos].empty? == false
-  #     return false
-  #   end
-  #   true
-  # end
+  def valid_move?(pos)
+    if @board.valid_pos?(pos) == false
+      return false
+    elsif @board[pos].empty? == false
+      return false
+    end
+    true
+  end
 
 end

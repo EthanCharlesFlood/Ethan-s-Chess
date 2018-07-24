@@ -1,6 +1,8 @@
+require 'byebug'
+
 module SteppingPiece
   def move_dirs
-    MOVES
+    move_diffs
   end
 
   def moves

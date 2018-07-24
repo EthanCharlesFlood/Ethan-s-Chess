@@ -25,7 +25,7 @@ class Board
     self[[0,6]] = Knight.new(:white, self, [0,6])
     self[[0,7]] = Rook.new(:white, self, [0,7])
     (0..7).each do |idx|
-      self[[1,idx]] = Pawn.new(:white, self, [0,idx])
+      self[[1,idx]] = Pawn.new(:white, self, [1,idx])
     end
   end
 
@@ -47,6 +47,10 @@ class Board
     @grid = Array.new(8) {Array.new(8) { NullPiece.instance }}
   end
 
+  def pieces
+    @grid.flatten.reject { |piece| piece.empty? }
+  end
+
   def [](pos)
     row,col = pos
     @grid[row][col]
@@ -59,13 +63,13 @@ class Board
 
   def move_piece(start_pos,end_pos)
     piece = self[start_pos]
-    if self[start_pos] == null_location
+    if self[start_pos] == NullPiece.instance
       raise "No piece at start position"
-    elsif self[end_pos] == null_location || end_pos == start_pos
+    elsif self[end_pos] == NullPiece.instance || end_pos == start_pos
       raise "Piece can not move to end position"
     else
       self[end_pos] = piece
-      self[start_pos] = null_location
+      self[start_pos] = NullPiece.instance
     end
   end
 
@@ -74,4 +78,10 @@ class Board
     row >= 0 && row <= 7 && col >= 0 && col <=7
   end
 
+  def in_check?(color)
+    king = pieces.select { |piece| piece.color == color && piece.is_a?(King) }[0]
+    enemy_pieces = pieces.select { |piece| piece.color != color}
+
+    enemy_pieces.any? { |piece| piece.moves.include?(king.pos) }
+  end
 end
