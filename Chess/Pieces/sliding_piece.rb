@@ -18,9 +18,7 @@ module SlidingPiece
     moves = []
     move_dirs.each do |direction|
       moves += grow_unblocked_moves_in_dir(direction[0], direction[1])
-      # debugger
     end
-    # debugger
     moves
   end
 
@@ -34,13 +32,13 @@ module SlidingPiece
     unblocked_moves = []
 
     potential_move = [self.pos[0] + dx, self.pos[1] + dy]
-    # debugger
+
     until valid_move?(potential_move) == false
         unblocked_moves << potential_move
-        # debugger
+
         potential_move = [potential_move[0] + dx, potential_move[1] + dy]
     end
-    #conditional that shovels in pmove if @board @ pmove is an enemy piece
+
     if !board[potential_move].nil? && board[potential_move].color != self.color
       unless potential_move[0] < 0 || potential_move[1] < 0
         unblocked_moves << potential_move

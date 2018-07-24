@@ -10,7 +10,6 @@ class Rook < Piece
   protected
 
   def move_dirs
-    # Our module will provide possible horizontal positions
     HORIZONTAL_DIRS
   end
 

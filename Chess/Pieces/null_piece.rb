@@ -1,4 +1,4 @@
-require_relative "Piece"
+require_relative "piece"
 
 class NullPiece < Piece
   # include Singleton
@@ -21,7 +21,6 @@ class NullPiece < Piece
   end
 
   def symbol
-    #I don't do anything.
   end
 
   def to_s
