@@ -2,16 +2,17 @@ require_relative "pieces.rb"
 require 'byebug'
 
 class Board
-  def populate
-    white_populate
-    @grid[2..5].each { |row| row.map! { |pos| NullPiece.new }}
-    black_populate
-  end
+  attr_reader :grid, :null_location
 
   def initialize(color,board,pos)
     @color = color
-    @board = board
     @pos = pos
+  end
+
+  def populate
+    white_populate
+    # @grid[2..5].each { |row| row.map! { |pos| @null_location } }
+    black_populate
   end
 
   def white_populate
@@ -43,11 +44,10 @@ class Board
   end
 
   def initialize
-    @grid = Array.new(8) {Array.new(8)}
+    @grid = Array.new(8) {Array.new(8) { NullPiece.instance }}
   end
 
   def [](pos)
-
     row,col = pos
     @grid[row][col]
   end
@@ -59,13 +59,13 @@ class Board
 
   def move_piece(start_pos,end_pos)
     piece = self[start_pos]
-    if self[start_pos].is_a?(NullPiece)
+    if self[start_pos] == null_location
       raise "No piece at start position"
-    elsif self[end_pos].is_a?(NullPiece) == false || end_pos == start_pos
+    elsif self[end_pos] == null_location || end_pos == start_pos
       raise "Piece can not move to end position"
     else
       self[end_pos] = piece
-      self[start_pos] = NullPiece.new
+      self[start_pos] = null_location
     end
   end
 

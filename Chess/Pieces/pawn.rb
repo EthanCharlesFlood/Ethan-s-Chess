@@ -21,5 +21,4 @@ class Pawn < Piece
 
   def side_attacks
   end
-
 end

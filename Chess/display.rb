@@ -44,7 +44,7 @@ class Display
     puts "  A B C D E F G H "
     puts " -----------------"
     display_grid.each_with_index do |row,i|
-      puts "#{i}|" +row.join("|") + "|"
+      puts "#{i}|" + row.join("|") + "|"
     end
     puts " -----------------"
 
@@ -52,7 +52,7 @@ class Display
   end
 
   def move_cursor
-    # start_pos, end_pos = @cursor.cursor_pos,
+    start_pos, end_pos = @cursor.cursor_pos,
     i=0
     while i < 1
       self.cursor.get_input

@@ -1,19 +1,11 @@
+require 'singleton'
 require_relative "piece"
 
 class NullPiece < Piece
-  # include Singleton
+  include Singleton
 
   def initialize
-    @empty_positions = []
-    initial_null_populator
-  end
-
-  def initial_null_populator
-    (2..5).each do |row|
-      (0..7).each do |pos|
-        @empty_positions << [row,pos]
-      end
-    end
+    @color = :none
   end
 
   def empty?
@@ -21,6 +13,7 @@ class NullPiece < Piece
   end
 
   def symbol
+    " "
   end
 
   def to_s
@@ -28,12 +21,6 @@ class NullPiece < Piece
   end
 
   def moves
-    # When a piece moves, it's current pos should be added to @empty_positions
-    # When a piece moves, it's end_pos should be removed from @empty_positions
-      # if it's not moving onto another piece.
+    []
   end
-
-  # Maybe add a singleton module when we're smarter.
-
-
 end
