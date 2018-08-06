@@ -11,7 +11,6 @@ class Board
 
   def populate
     white_populate
-    # @grid[2..5].each { |row| row.map! { |pos| @null_location } }
     black_populate
   end
 
