@@ -4,27 +4,14 @@ require "colorize"
 
 class Display
 
-  attr_reader :board, :cursor
+  attr_reader :board, :cursor, :notifications
 
 
   def initialize(board)
     @cursor = Cursor.new([0,0],board)
     @board = board
+    @notifications = {}
   end
-
-  def board
-    @board
-  end
-
-  # def [](pos)
-  #   row, col = pos
-  #   @display_grid[row][col]
-  # end
-  #
-  # def []=(pos, value)
-  #   row, col = pos
-  #   @display_grid[row][col] = value
-  # end
 
   def render
     display_grid = Array.new(8) {Array.new(8)}
@@ -48,7 +35,22 @@ class Display
     end
     puts " -----------------"
 
+    @notifications.values.each do |value|
+      puts value
+    end
     nil
+  end
+
+  def reset!
+    @notifications.delete(:error)
+  end
+
+  def check!
+    @notifications[:check] = "Check!"
+  end
+
+  def uncheck!
+    @notifications.delete(:check)
   end
 
   def move_cursor
