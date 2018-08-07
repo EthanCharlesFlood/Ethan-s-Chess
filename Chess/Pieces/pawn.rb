@@ -33,6 +33,7 @@ class Pawn < Piece
         fmoves.push([(x + 2), y]) if board[[(x + 2), y]].empty? && board.valid_pos?([(x + 2), y])
       end
     end
+    fmoves
   end
 
   def side_attacks

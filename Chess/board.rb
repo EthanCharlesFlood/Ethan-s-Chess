@@ -20,7 +20,6 @@ class Board
     pieces.each do |piece|
       copy[piece.pos] = piece.class.new(piece.color, copy, piece.pos)
     end
-    debugger
     copy
   end
 
@@ -70,18 +69,20 @@ class Board
     @grid[row][col] = value
   end
 
-  def move_piece(start_pos,end_pos)
+  def move_piece(turn_color, start_pos, end_pos)
     piece = self[start_pos]
 
-    if self[start_pos] == NullPiece.instance
+    if piece == NullPiece.instance
       raise "No piece at start position"
-    elsif self[end_pos] != NullPiece.instance || end_pos == start_pos
+    elsif piece.color !== turn_color
+      raise "Not your piece!"
+    elsif !piece.moves.include?(end_pos)
       raise "Piece can not move to end position"
     elsif !piece.valid_moves.include?(end_pos)
       raise "You cannot move into check"
     else
       self[end_pos] = piece
-      self[start_pos] = NullPiece.instance
+      piece = NullPiece.instance
       piece.pos = end_pos
     end
   end
