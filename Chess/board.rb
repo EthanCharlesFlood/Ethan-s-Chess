@@ -14,6 +14,16 @@ class Board
     black_populate
   end
 
+  def dup
+    copy = Board.new
+
+    pieces.each do |piece|
+      piece.class.new(piece.color, copy, piece.pos)
+    end
+
+    copy
+  end
+
   def white_populate
     self[[0,0]] = Rook.new(:white, self, [0,0])
     self[[0,1]] = Knight.new(:white, self, [0,1])

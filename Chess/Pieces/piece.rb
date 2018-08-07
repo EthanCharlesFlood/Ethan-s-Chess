@@ -50,7 +50,8 @@ attr_reader :pos, :color, :board
   private
 
   def move_into_check?(end_pos)
-    # kind of complicated
-    # determines if a move will put a king in check?  (maybe your king, maybe theirs?)
+    d_board = @board.dup
+    d_board.move_piece(@pos, end_pos)
+    d_board.in_check?(@color)
   end
 end
