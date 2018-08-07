@@ -15,7 +15,7 @@ attr_reader :pos, :color, :board
   end
 
   def valid_moves
-    raise NotImplementedError
+    moves.reject { |end_pos| move_into_check?(end_pos) }
   end
 
   def pos=(val)
@@ -51,7 +51,7 @@ attr_reader :pos, :color, :board
 
   def move_into_check?(end_pos)
     d_board = @board.dup
-    d_board.move_piece(@pos, end_pos)
+    d_board.move_piece!(@pos, end_pos)
     d_board.in_check?(@color)
   end
 end

@@ -72,14 +72,29 @@ class Board
 
   def move_piece(start_pos,end_pos)
     piece = self[start_pos]
+
     if self[start_pos] == NullPiece.instance
       raise "No piece at start position"
     elsif self[end_pos] == NullPiece.instance || end_pos == start_pos
       raise "Piece can not move to end position"
+    elsif !piece.valid_moves.include?(end_pos)
+      raise "You cannot move into check"
     else
       self[end_pos] = piece
       self[start_pos] = NullPiece.instance
+      piece.pos = end_pos
     end
+  end
+
+  def move_piece!(start_pos, end_pos)
+    piece = self[start_pos]
+    raise "invalid move" unless piece.moves.include?(end_pos)
+
+    self[end_pos] = piece
+    self[start_pos] = NullPiece.instance
+    piece.pos = end_pos
+
+    nil
   end
 
   def valid_pos?(pos)
