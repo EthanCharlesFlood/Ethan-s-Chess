@@ -37,8 +37,8 @@ module SlidingPiece
 
         potential_move = [potential_move[0] + dx, potential_move[1] + dy]
     end
-    if !board[potential_move].nil? && board[potential_move].color != self.color
-      unless potential_move[0] < 0 || potential_move[1] < 0
+    unless potential_move[0] < 0 || potential_move[1] < 0 || potential_move[0] > 7 || potential_move[1] > 7
+      if !board[potential_move].nil? && board[potential_move].color != self.color
         unblocked_moves << potential_move
       end
     end
