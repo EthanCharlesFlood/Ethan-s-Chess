@@ -77,10 +77,20 @@ class Board
     row >= 0 && row <= 7 && col >= 0 && col <=7
   end
 
+  def enemy_pieces(color)
+    pieces.select { |piece| piece.color != color}
+  end
+
   def in_check?(color)
     king = pieces.select { |piece| piece.color == color && piece.is_a?(King) }[0]
-    enemy_pieces = pieces.select { |piece| piece.color != color}
 
-    enemy_pieces.any? { |piece| piece.moves.include?(king.pos) }
+    enemy_pieces(color).any? { |piece| piece.moves.include?(king.pos) }
   end
+
+  def checkmate?(color)
+    return false unless in_check?(color)
+
+    pieces.select { |p| p.color == color }.all? do |piece|
+      piece.valid_moves.empty?
+    end
 end
