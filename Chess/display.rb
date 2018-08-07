@@ -14,6 +14,7 @@ class Display
   end
 
   def render
+    system("clear")
     display_grid = Array.new(8) {Array.new(8)}
 
     (0..7).each do |i|

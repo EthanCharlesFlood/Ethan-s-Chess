@@ -18,9 +18,9 @@ class Board
     copy = Board.new
 
     pieces.each do |piece|
-      piece.class.new(piece.color, copy, piece.pos)
+      copy[piece.pos] = piece.class.new(piece.color, copy, piece.pos)
     end
-
+    debugger
     copy
   end
 
@@ -75,7 +75,7 @@ class Board
 
     if self[start_pos] == NullPiece.instance
       raise "No piece at start position"
-    elsif self[end_pos] == NullPiece.instance || end_pos == start_pos
+    elsif self[end_pos] != NullPiece.instance || end_pos == start_pos
       raise "Piece can not move to end position"
     elsif !piece.valid_moves.include?(end_pos)
       raise "You cannot move into check"
@@ -88,6 +88,7 @@ class Board
 
   def move_piece!(start_pos, end_pos)
     piece = self[start_pos]
+    puts piece.moves
     raise "invalid move" unless piece.moves.include?(end_pos)
 
     self[end_pos] = piece
@@ -118,4 +119,5 @@ class Board
     pieces.select { |p| p.color == color }.all? do |piece|
       piece.valid_moves.empty?
     end
+  end
 end
