@@ -3,6 +3,14 @@ class Pawn < Piece
     :P
   end
 
+  def to_s
+    if self.color == :white
+      "\u{2659}"
+    elsif self.color == :black
+      "\u{265F}"
+    end
+  end
+
   def moves
     forward_steps + side_attacks
   end

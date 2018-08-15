@@ -7,6 +7,14 @@ class Rook < Piece
     :R
   end
 
+  def to_s
+    if self.color == :white
+      "\u{2656}"
+    elsif self.color == :black
+      "\u{265C}"
+    end
+  end
+
   protected
 
   def move_dirs

@@ -7,6 +7,14 @@ class Bishop < Piece
     :B
   end
 
+  def to_s
+    if self.color == :white
+      "\u{2657}"
+    elsif self.color == :black
+      "\u{265D}"
+    end
+  end
+
   protected
 
   def move_dirs

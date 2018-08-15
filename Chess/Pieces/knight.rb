@@ -7,6 +7,14 @@ class Knight < Piece
     :K
   end
 
+  def to_s
+    if self.color == :white
+      "\u{2658}"
+    elsif self.color == :black
+      "\u{265E}"
+    end
+  end
+
   private
 
   def move_diffs
