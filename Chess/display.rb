@@ -20,7 +20,7 @@ class Display
     (0..7).each do |i|
       (0..7).each do |j|
         pos = [i, j]
-        display_grid[i][j] = board[pos].to_s.colorize(:white)
+        display_grid[i][j] = board[pos].to_s
 
         if pos == @cursor.cursor_pos && board[pos].to_s != " "
           display_grid[i][j] = board[pos].to_s.colorize(:red)

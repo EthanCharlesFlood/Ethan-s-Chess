@@ -74,7 +74,7 @@ class Board
 
     if piece == NullPiece.instance
       raise "No piece at start position"
-    elsif piece.color !== turn_color
+    elsif piece.color != turn_color
       raise "Not your piece!"
     elsif !piece.moves.include?(end_pos)
       raise "Piece can not move to end position"
@@ -82,7 +82,7 @@ class Board
       raise "You cannot move into check"
     else
       self[end_pos] = piece
-      piece = NullPiece.instance
+      self[start_pos] = NullPiece.instance
       piece.pos = end_pos
     end
   end

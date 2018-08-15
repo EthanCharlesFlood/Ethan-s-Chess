@@ -1,3 +1,5 @@
+require "colorize"
+
 class Piece
   # PIECES = :P. :B, :K, :R, :Q, :*
 
@@ -27,7 +29,11 @@ attr_reader :pos, :color, :board
   end
 
   def to_s
-    symbol.to_s
+    if self.color == :white
+      symbol.to_s.colorize(:white)
+    else
+      symbol.to_s.colorize(:blue)
+    end
   end
 
   def valid_move?(pos)

@@ -70,7 +70,7 @@ class Cursor
 
   def handle_key(key)
     case key
-    when :space, :return # when space or return
+    when :space, :return 
       return self.cursor_pos
     when :up, :down, :right, :left
       update_pos(MOVES[key])
