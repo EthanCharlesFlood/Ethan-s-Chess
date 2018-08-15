@@ -32,7 +32,7 @@ class Display
     puts "  A B C D E F G H "
     puts " -----------------"
     display_grid.each_with_index do |row,i|
-      puts "#{i}|" + row.join("|") + "|"
+      puts "#{8 - i}|" + row.join("|") + "|"
     end
     puts " -----------------"
 
