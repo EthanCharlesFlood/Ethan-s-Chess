@@ -1,7 +1,6 @@
 require "colorize"
 
 class Piece
-  # PIECES = :P. :B, :K, :R, :Q, :*
 
 COLORS = [:white, :black]
 

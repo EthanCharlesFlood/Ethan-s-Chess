@@ -46,6 +46,6 @@ class Game
   end
 end
 
-if $PROGRAm_NAME == __FILE__
+if $PROGRAM_NAME == __FILE__
   Game.new.play
 end
