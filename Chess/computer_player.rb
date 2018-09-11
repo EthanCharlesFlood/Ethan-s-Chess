@@ -4,7 +4,7 @@ class ComputerPlayer < Player
 
   # inherits a color and a display in initialize from payer class
   def make_move
-
+    more_aggressive_ai_make_move
   end
 
   def pieces
@@ -45,5 +45,14 @@ class ComputerPlayer < Player
       potential_attacks.sample
     end
   end
+
+  # implementation which evaluates piece value and acts accordingly
+  VALUES = { Pawn => 10,
+    Knight => 30,
+    Bishop => 30,
+    Rook => 50,
+    Queen => 90,
+    King => 900
+  }
 
 end
