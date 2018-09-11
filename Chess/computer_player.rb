@@ -21,4 +21,9 @@ class ComputerPlayer < Player
     moves
   end
 
+  # very naive implementation of computer player
+  def easy_ai_make_move
+    moves.sample
+  end
+
 end
