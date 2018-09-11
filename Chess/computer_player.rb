@@ -13,7 +13,11 @@ class ComputerPlayer < Player
 
   def moves
     moves = []
-    pieces.each { |piece| moves += piece.moves }
+    pieces.each do |piece|
+      piece.moves.each do |move|
+        moves << [piece.pos, move]
+      end
+    end
     moves
   end
 
