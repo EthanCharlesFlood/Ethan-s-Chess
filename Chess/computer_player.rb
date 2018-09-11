@@ -26,4 +26,23 @@ class ComputerPlayer < Player
     moves.sample
   end
 
+  def points_of_attack
+    potential_attacks = []
+    moves.each do |move|
+      if display.board[move[1]].color != display.board[move[0]].color && display.board[move[1]].color != :none
+        potential_attacks << move
+      end
+    end
+    potential_attacks
+  end
+
+  def more_aggressive_ai
+    potential_attacks = points_of_attack
+    if potential_attacks.length < 1
+      moves.sample
+    else
+      potential_attacks.sample
+    end
+  end
+
 end
