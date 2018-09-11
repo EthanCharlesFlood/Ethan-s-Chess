@@ -26,6 +26,7 @@ class ComputerPlayer < Player
     moves.sample
   end
 
+  # slightly less naive implementation; will take pieces when given the opportunity
   def points_of_attack
     potential_attacks = []
     moves.each do |move|
@@ -36,7 +37,7 @@ class ComputerPlayer < Player
     potential_attacks
   end
 
-  def more_aggressive_ai
+  def more_aggressive_ai_make_move
     potential_attacks = points_of_attack
     if potential_attacks.length < 1
       moves.sample
