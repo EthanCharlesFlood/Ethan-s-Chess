@@ -1,6 +1,6 @@
 require_relative "board.rb"
 require_relative "cursor.rb"
-require "colorize"
+# require "colorize"
 
 class Display
 
