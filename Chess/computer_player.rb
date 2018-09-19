@@ -7,20 +7,6 @@ class ComputerPlayer < Player
     more_aggressive_ai_make_move
   end
 
-  def pieces
-    @display.board.pieces.select { |piece| piece.color == @color }
-  end
-
-  def moves
-    moves = []
-    pieces.each do |piece|
-      piece.moves.each do |move|
-        moves << [piece.pos, move]
-      end
-    end
-    moves
-  end
-
   # very naive implementation of computer player
   def easy_ai_make_move
     moves.sample
