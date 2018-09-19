@@ -8,5 +8,14 @@ class BoardEvaluator
     King => 900
   }
 
+  def initialize(board, player1, player2)
+    @board = board
+    @player1 = player1
+    @player2 = player2
+  end
+
+  def current_score
+
+  end
 
 end
