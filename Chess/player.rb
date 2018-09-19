@@ -1,9 +1,12 @@
+require_relative "board_evaluator.rb"
+
 class Player
   attr_reader :color, :display
 
   def initialize(color, display)
     @color = color
     @display = display
+    @board_evaluator = BoardEvaluator.new
   end
 
     def pieces

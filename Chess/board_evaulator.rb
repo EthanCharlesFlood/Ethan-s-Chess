@@ -9,13 +9,9 @@ class BoardEvaluator
     NullPiece => 0
   }
 
-  def initialize(board)
-    @board = board
-  end
-
-  def simple_score(color)
+  def simple_score(board, color)
       score = 0
-      @board.pieces.each do |piece|
+      board.pieces.each do |piece|
         score += VALUES[piece.class] if piece.color == color
         score -= VALUES[piece.class] if piece.color != color
       end

@@ -1,5 +1,4 @@
 require_relative "player.rb"
-require_relative "board_evaluator.rb"
 
 class ComputerPlayer < Player
 
@@ -35,4 +34,7 @@ class ComputerPlayer < Player
 
   # implementation which evaluates piece value and acts accordingly
 
+  def take_best_piece
+
+  end
 end
