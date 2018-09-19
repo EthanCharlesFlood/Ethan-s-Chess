@@ -5,26 +5,20 @@ class BoardEvaluator
     Bishop => 30,
     Rook => 50,
     Queen => 90,
-    King => 900
+    King => 900,
+    NullPiece => 0
   }
 
-  def initialize(board, player, player2)
+  def initialize(board)
     @board = board
-    @player1 = player1
-    @player2 = player2
   end
 
-  def simple_score
+  def simple_score(color)
       score = 0
-      
-      @player1.pieces.each do |piece|
-        score += VALUES[piece.class]
+      @board.pieces.each do |piece|
+        score += VALUES[piece.class] if piece.color == color
+        score -= VALUES[piece.class] if piece.color != color
       end
-
-      @player2.pieces.each do |piece|
-        score -= VALUES[piece.class]
-      end
-
       score
   end
 
