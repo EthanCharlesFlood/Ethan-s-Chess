@@ -7,6 +7,8 @@ class Board
   def initialize(color,board,pos)
     @color = color
     @pos = pos
+    @last_pieces = null
+    @last_poes = null
   end
 
   def populate
@@ -81,10 +83,19 @@ class Board
     elsif !piece.valid_moves.include?(end_pos)
       raise "You cannot move into check"
     else
+      @last_pieces = [self[start_pos], self[end_pos]]
+      @last_pos = [start_pos, end_pos]
       self[end_pos] = piece
       self[start_pos] = NullPiece.instance
       piece.pos = end_pos
     end
+  end
+
+  def undo
+    self[@last_pos[0]] = @last_pieces[0]
+    @last_pieces[0].pos = @last_pos[0]
+    self[@last_pos[1]] = @last_pieces[1]
+    @last_pieces[1].pos = @last_pos[1]
   end
 
   def move_piece!(start_pos, end_pos)
