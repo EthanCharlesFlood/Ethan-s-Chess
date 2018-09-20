@@ -35,6 +35,11 @@ class ComputerPlayer < Player
   # implementation which evaluates piece value and acts accordingly
 
   def take_best_piece
+    best move = nil
+    best_value = -10000
+
+    moves.each do |move|
+      
 
   end
 end

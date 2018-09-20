@@ -7,6 +7,7 @@ class Board
   def initialize(color,board,pos)
     @color = color
     @pos = pos
+    @last_move = nil
   end
 
   def populate
