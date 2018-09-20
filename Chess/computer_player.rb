@@ -35,11 +35,19 @@ class ComputerPlayer < Player
   # implementation which evaluates piece value and acts accordingly
 
   def take_best_piece
+    test_board = @display.board.dup
     best move = nil
     best_value = -10000
 
-    moves.each do |move|
-      
-
+    moves.shuffle.each do |move|
+      test_board.make_move(move)
+      value = -@board_evaluator.simple_score(test_board, @color)
+      test_board.undo
+      if value > best_value
+        best_value = value
+        best_move = move
+      end
+    end
+    best_move
   end
 end
