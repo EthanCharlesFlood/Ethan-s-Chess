@@ -36,7 +36,7 @@ class ComputerPlayer < Player
 
   def take_best_piece
     test_board = @display.board.dup
-    best move = nil
+    best_move = nil
     best_value = -10000
 
     moves.shuffle.each do |move|
@@ -58,6 +58,6 @@ class ComputerPlayer < Player
     best_move = nil
     best_value = -10000
 
-    
+
   end
 end
