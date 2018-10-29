@@ -51,5 +51,13 @@ class ComputerPlayer < Player
     best_move
   end
 
-  #
+  #Minimax implemented utilizing alpha beta prunding and a search tree
+
+  def Minimax_tree_ab_pruning_player
+    test_board = @display.board.dup
+    best_move = nil
+    best_value = -10000
+
+    
+  end
 end
