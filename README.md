@@ -1,4 +1,4 @@
-# ETHANS CHESS!
+# ETHAN'S CHESS
 
 A simple console implementation of chess built with ruby.
 
