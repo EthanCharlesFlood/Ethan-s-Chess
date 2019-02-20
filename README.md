@@ -16,7 +16,7 @@ it can be played between two human players in the terminal. Pieces are built wit
 both sliding and stepping pieces.  These superclasses handle the base functionality of the movement,
 which is then pared down in the classes to represent the various chess pieces.
 
-```
+```ruby
 class Queen < Piece
   include SlidingPiece
 
